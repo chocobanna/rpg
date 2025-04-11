@@ -1,21 +1,15 @@
-// Import
-use std::io;
-
-mod character;
+mod libs;
 
 fn main() {
-    println!("What's your name adventurer?");
-    let mut input = String::new(); 
+    let user_input = libs::input::read_input("What's your name adventurer?: ");
 
-    io::stdin().read_line(&mut input).expect("How the actual fu--. You typed nothing gj.");
-
-    let input = input.trim();
-
-    let player1 = character::Character{
-        name:input.to_string(),
+    let player1 = libs::character::Character{
+        name:user_input.to_string(),
         level:1,
+        strength:1,
+        constitution:1,
     };
 
-    println!("Welcome to RPG Test! V0.1");
+    println!("Welcome to RPG Test!");
     eprintln!("{}",player1);
 }
